@@ -21,7 +21,7 @@ public struct AboutView: View {
                 .frame(width: 96, height: 96)
 
             VStack(spacing: 4) {
-                Text("Bòcan")
+                Text("SuperMusic")
                     .font(.title.bold())
                 Text("Version \(self.version) (\(self.build))")
                     .font(.subheadline)
@@ -38,7 +38,7 @@ public struct AboutView: View {
             }
             .buttonStyle(.borderedProminent)
             .disabled(!self.canCheckForUpdates)
-            .help("Check whether a newer version of Bòcan is available.")
+            .help("Check whether a newer version of SuperMusic is available.")
 
             Divider()
 
