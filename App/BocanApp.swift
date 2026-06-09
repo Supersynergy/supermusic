@@ -64,7 +64,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCent
         }
 
         let alert = NSAlert()
-        alert.messageText = "Quit Bòcan?"
+        alert.messageText = "Quit SuperMusic?"
         alert.informativeText = informativeText
         alert.addButton(withTitle: "Quit")
         alert.addButton(withTitle: "Cancel")
@@ -149,6 +149,7 @@ struct BocanApp: App {
     /// by SwiftUI without re-entering the graph.  Settings writes to this via the
     /// menuBarExtraEnabled EnvironmentKey, which propagates as a plain Binding<Bool>.
     @State private var showMenuBarExtra = UserDefaults.standard.bool(forKey: "general.showMenuBarExtra")
+    @State private var notchController: NotchPlayerController?
 
     private let log = AppLogger.make(.app)
 
@@ -175,8 +176,16 @@ struct BocanApp: App {
     var body: some Scene {
         // MARK: Main window
 
-        WindowGroup("Bòcan", id: "main") {
+        WindowGroup("SuperMusic", id: "main") {
             AppRootGate(model: self.model, appDelegate: self.appDelegate)
+                .onChange(of: self.model.graph != nil) { _, isReady in
+                    guard isReady, let np = self.model.graph?.libraryViewModel.nowPlaying else { return }
+                    if self.notchController == nil {
+                        let ctrl = NotchPlayerController(vm: np)
+                        self.notchController = ctrl
+                        ctrl.install()
+                    }
+                }
         }
         .windowResizability(.contentSize)
         .defaultSize(width: 1100, height: 700)
@@ -186,7 +195,7 @@ struct BocanApp: App {
 
         // MARK: About / Help / Notices (database-independent)
 
-        Window("About Bòcan", id: "about") {
+        Window("About SuperMusic", id: "about") {
             AboutView(
                 onCheckForUpdates: { self.updateController.checkForUpdates() },
                 canCheckForUpdates: self.updateController.canCheckForUpdates
@@ -196,7 +205,7 @@ struct BocanApp: App {
         .defaultSize(width: 360, height: 520)
         .restorationBehavior(.disabled)
 
-        Window("Bòcan Help", id: "bocan-help") {
+        Window("SuperMusic Help", id: "bocan-help") {
             HelpWindowView()
         }
         .windowResizability(.contentMinSize)
@@ -249,8 +258,8 @@ struct BocanApp: App {
         // `isPlaying` / `isPaused` give property-level granularity, so this
         // re-evaluates at most twice per track transition.
         let np = self.model.graph?.libraryViewModel.nowPlaying
-        let menuBarLabel: String = np?.isPlaying == true ? "Bòcan — Playing"
-            : (np?.isPaused == true ? "Bòcan — Paused" : "Bòcan")
+        let menuBarLabel: String = np?.isPlaying == true ? "SuperMusic — Playing"
+            : (np?.isPaused == true ? "SuperMusic — Paused" : "SuperMusic")
         let menuBarIcon: String = np?.isPlaying == true ? "music.note.list" : "music.note"
         MenuBarExtra(menuBarLabel, systemImage: menuBarIcon, isInserted: self.$showMenuBarExtra) {
             MenuBarWindowContent(model: self.model)

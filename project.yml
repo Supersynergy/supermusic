@@ -1,7 +1,7 @@
 ## Bòcan — project.yml (XcodeGen)
 # Run `xcodegen generate` to regenerate Bocan.xcodeproj from this file.
 
-name: Bocan
+name: SuperMusic
 options:
   bundleIdPrefix: io.cloudcauldron
   deploymentTarget:
@@ -29,9 +29,9 @@ settings:
     CURRENT_PROJECT_VERSION: 1
     ARCHS: arm64
     VALID_ARCHS: arm64
-    PRODUCT_BUNDLE_IDENTIFIER: io.cloudcauldron.bocan
+    PRODUCT_BUNDLE_IDENTIFIER: io.supersynergy.supermusic
     INFOPLIST_FILE: Resources/Info.plist
-    CODE_SIGN_ENTITLEMENTS: Resources/Bocan.entitlements
+    CODE_SIGN_ENTITLEMENTS: Resources/SuperMusic.entitlements
     ENABLE_HARDENED_RUNTIME: YES
     ENABLE_APP_SANDBOX: YES
     SWIFT_EMIT_LOC_STRINGS: YES
