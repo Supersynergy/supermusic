@@ -193,6 +193,45 @@ struct BocanCommands: Commands {
 
             Divider()
 
+            // Seek shortcuts — arrow keys for precise navigation
+            Button("Seek Back 1 Second") {
+                Task { await self.vm.nowPlaying.scrub(to: max(0, self.vm.nowPlaying.position - 1)) }
+            }
+            .keyboardShortcut(KeyBindings.seekBack1)
+            .disabled(self.vm.nowPlaying.nowPlayingTrackID == nil)
+
+            Button("Seek Forward 1 Second") {
+                Task { await self.vm.nowPlaying.scrub(to: min(self.vm.nowPlaying.duration, self.vm.nowPlaying.position + 1)) }
+            }
+            .keyboardShortcut(KeyBindings.seekFwd1)
+            .disabled(self.vm.nowPlaying.nowPlayingTrackID == nil)
+
+            Button("Seek Back 5 Seconds") {
+                Task { await self.vm.nowPlaying.scrub(to: max(0, self.vm.nowPlaying.position - 5)) }
+            }
+            .keyboardShortcut(KeyBindings.seekBack5)
+            .disabled(self.vm.nowPlaying.nowPlayingTrackID == nil)
+
+            Button("Seek Forward 5 Seconds") {
+                Task { await self.vm.nowPlaying.scrub(to: min(self.vm.nowPlaying.duration, self.vm.nowPlaying.position + 5)) }
+            }
+            .keyboardShortcut(KeyBindings.seekFwd5)
+            .disabled(self.vm.nowPlaying.nowPlayingTrackID == nil)
+
+            Button("Seek Back 30 Seconds") {
+                Task { await self.vm.nowPlaying.scrub(to: max(0, self.vm.nowPlaying.position - 30)) }
+            }
+            .keyboardShortcut(KeyBindings.seekBack30)
+            .disabled(self.vm.nowPlaying.nowPlayingTrackID == nil)
+
+            Button("Seek Forward 30 Seconds") {
+                Task { await self.vm.nowPlaying.scrub(to: min(self.vm.nowPlaying.duration, self.vm.nowPlaying.position + 30)) }
+            }
+            .keyboardShortcut(KeyBindings.seekFwd30)
+            .disabled(self.vm.nowPlaying.nowPlayingTrackID == nil)
+
+            Divider()
+
             Button(self.vm.nowPlaying.isMuted ? "Unmute" : "Mute") {
                 Task { await self.vm.nowPlaying.toggleMute() }
             }

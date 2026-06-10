@@ -129,4 +129,30 @@ public enum KeyBindings {
 
     /// `⌥⌘←` — Navigate back.
     public static let drillOut = KeyboardShortcut(.leftArrow, modifiers: [.option, .command])
+
+    // MARK: - Seek (arrow keys when focused on player)
+
+    /// `←` — Seek back 1 second.
+    public static let seekBack1  = KeyboardShortcut(.leftArrow,  modifiers: [])
+
+    /// `→` — Seek forward 1 second.
+    public static let seekFwd1   = KeyboardShortcut(.rightArrow, modifiers: [])
+
+    /// `⇧←` — Seek back 5 seconds.
+    public static let seekBack5  = KeyboardShortcut(.leftArrow,  modifiers: .shift)
+
+    /// `⇧→` — Seek forward 5 seconds.
+    public static let seekFwd5   = KeyboardShortcut(.rightArrow, modifiers: .shift)
+
+    /// `⇧⌘←` — Seek back 30 seconds.
+    public static let seekBack30 = KeyboardShortcut(.leftArrow,  modifiers: [.shift, .command])
+
+    /// `⇧⌘→` — Seek forward 30 seconds.
+    public static let seekFwd30  = KeyboardShortcut(.rightArrow, modifiers: [.shift, .command])
+
+    /// `↑` (no modifier) — Next track quick-key.
+    public static let nextTrackUp = KeyboardShortcut(.upArrow, modifiers: [])
+
+    /// `↓` (no modifier) — Previous track quick-key.
+    public static let prevTrackDown = KeyboardShortcut(.downArrow, modifiers: [])
 }

@@ -38,6 +38,19 @@ public struct NotchPlayerView: View {
         .contentShape(self.notchShape)
         .onTapGesture(perform: self.onTap)
         .animation(.spring(response: 0.28, dampingFraction: 0.82), value: self.isExpanded)
+        // Keyboard shortcuts — active when notch window is focused
+        .onKeyPress(.leftArrow)  { Task { await vm.scrub(to: max(0, vm.position - 1))  }; return .handled }
+        .onKeyPress(.rightArrow) { Task { await vm.scrub(to: min(vm.duration, vm.position + 1)) }; return .handled }
+        .onKeyPress(.upArrow)    { Task { await vm.next()     }; return .handled }
+        .onKeyPress(.downArrow)  { Task { await vm.previous() }; return .handled }
+        .onKeyPress(.leftArrow,  phases: .down, action: { e in
+            guard e.modifiers.contains(.shift) else { return .ignored }
+            Task { await vm.scrub(to: max(0, vm.position - 5)) }; return .handled
+        })
+        .onKeyPress(.rightArrow, phases: .down, action: { e in
+            guard e.modifiers.contains(.shift) else { return .ignored }
+            Task { await vm.scrub(to: min(vm.duration, vm.position + 5)) }; return .handled
+        })
     }
 
     // MARK: - Collapsed pill

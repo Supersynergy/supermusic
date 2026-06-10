@@ -1,0 +1,54 @@
+<svg width="480" height="320" viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="480" height="320" rx="12" fill="#1a1a2e"/>
+  
+  <!-- Header -->
+  <text x="240" y="40" font-family="sans-serif" font-weight="bold" font-size="18" fill="#00E5FF" text-anchor="middle">SuperMusic Shortcuts</text>
+  
+  <!-- Styles -->
+  <style>
+    .key { font-family: monospace; font-size: 14px; fill: #00E5FF; font-weight: bold; }
+    .desc { font-family: sans-serif; font-size: 13px; fill: #FFFFFF; }
+    .separator { stroke: #00E5FF; stroke-opacity: 0.1; stroke-width: 1; }
+  </style>
+
+  <!-- Left Column -->
+  <g transform="translate(30, 80)">
+    <!-- Seek 1s -->
+    <text class="key" y="0">← / →</text>
+    <text class="desc" x="110" y="0">Seek ±1 second</text>
+    <line x1="0" y1="12" x2="420" y2="12" class="separator" />
+
+    <!-- Seek 5s -->
+    <text class="key" y="40">⇧← / ⇧→</text>
+    <text class="desc" x="110" y="40">Seek ±5 seconds</text>
+    <line x1="0" y1="52" x2="420" y2="52" class="separator" />
+
+    <!-- Seek 30s -->
+    <text class="key" y="80">⇧⌘← / ⇧⌘→</text>
+    <text class="desc" x="110" y="80">Seek ±30 seconds</text>
+    <line x1="0" y1="92" x2="420" y2="92" class="separator" />
+
+    <!-- Play/Pause -->
+    <text class="key" y="120">Space</text>
+    <text class="desc" x="110" y="120">Play / Pause</text>
+    <line x1="0" y1="132" x2="420" y2="132" class="separator" />
+
+    <!-- Track Navigation (Alt) -->
+    <text class="key" y="160">↑ / ↓</text>
+    <text class="desc" x="110" y="160">Next / Previous track</text>
+    <line x1="0" y1="172" x2="420" y2="172" class="separator" />
+
+    <!-- Track Navigation (Cmd) -->
+    <text class="key" y="200">⌘← / ⌘→</text>
+    <text class="desc" x="110" y="200">Previous / Next track</text>
+    <line x1="0" y1="212" x2="420" y2="212" class="separator" />
+
+    <!-- Volume -->
+    <text class="key" y="240">⌘↑ / ⌘↓</text>
+    <text class="desc" x="110" y="240">Volume Up / Down</text>
+  </g>
+  
+  <!-- Accent Border -->
+  <rect x="2" y="2" width="476" height="316" rx="10" fill="none" stroke="#00E5FF" stroke-width="1" stroke-opacity="0.3"/>
+</svg>

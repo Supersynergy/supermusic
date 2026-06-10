@@ -1,0 +1,60 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient: Deep Purple to Black -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E1B4B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#020617;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Accent Gradient: Electric Cyan to Teal -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0099FF;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow Effect -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0  0 0 0 0 0.898  0 0 0 0 1  0 0 0 0.8 0" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    
+    <!-- Pulse Effect for Note Head -->
+    <radialGradient id="headPulse" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#00E5FF;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- macOS Squircle Background -->
+  <path d="M115,40 H397 C465,40 472,47 472,115 V397 C472,465 465,472 397,472 H115 C47,472 40,465 40,397 V115 C40,47 47,40 115,40 Z" fill="url(#bgGrad)" />
+  
+  <!-- Subtle Inner Bezel -->
+  <path d="M115,42 H397 C463,42 470,49 470,115 V397 C470,463 463,470 397,470 H115 C49,470 42,463 42,397 V115 C42,49 49,42 115,42 Z" fill="none" stroke="white" stroke-opacity="0.1" stroke-width="1" />
+
+  <!-- Main Element: Stylized Note/Waveform -->
+  <g filter="url(#glow)" transform="translate(130, 110)">
+    <!-- Note Head Pulse -->
+    <circle cx="50" cy="240" r="70" fill="url(#headPulse)" />
+    <!-- Note Head -->
+    <circle cx="50" cy="240" r="45" fill="url(#accentGrad)" />
+    <!-- Highlight on Head -->
+    <circle cx="40" cy="230" r="15" fill="white" opacity="0.2" />
+    
+    <!-- Stem (Main Bar) -->
+    <rect x="85" y="30" width="18" height="210" rx="9" fill="url(#accentGrad)" />
+    
+    <!-- Waveform Flag Elements -->
+    <rect x="115" y="60" width="16" height="140" rx="8" fill="url(#accentGrad)" opacity="0.95" />
+    <rect x="145" y="85" width="16" height="110" rx="8" fill="url(#accentGrad)" opacity="0.85" />
+    <rect x="175" y="70" width="16" height="135" rx="8" fill="url(#accentGrad)" opacity="0.75" />
+    <rect x="205" y="45" width="16" height="170" rx="8" fill="url(#accentGrad)" opacity="0.65" />
+    <rect x="235" y="100" width="16" height="80" rx="8" fill="url(#accentGrad)" opacity="0.55" />
+    
+    <!-- Connecting Glossy Beam -->
+    <path d="M85,30 C150,30 210,50 251,100 L251,125 C210,70 150,55 85,55 Z" fill="#00E5FF" opacity="0.3" />
+  </g>
+</svg>
